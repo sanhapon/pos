@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
   input: {
     marginLeft: 30,
     marginRight: 30,
-    width: isPhone?100:300,
+    width: isPhone?250:300,
     height: 44,
     padding: 10,
     borderWidth: 2,
@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'black',
     backgroundColor: '#1a75ff',
-    width: isPhone?100:300,
+    width: isPhone?250:300,
     height: 44,
     marginTop: 10,
     justifyContent: 'center',
