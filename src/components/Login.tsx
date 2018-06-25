@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, TextInput, TouchableOpacity, View, StyleSheet, Alert } from 'react-native';
+import { Text, TextInput, TouchableOpacity, View, StyleSheet, Dimensions, Alert } from 'react-native';
 import { Credential } from './credential';
 
 export class Login extends React.Component<any, Credential> {
@@ -38,7 +38,7 @@ export class Login extends React.Component<any, Credential> {
           </TouchableOpacity>
 
           <TouchableOpacity
-              style={styles.buttonContainer}
+              style={ [styles.buttonContainer, {marginTop: 50, width:200}]}
               activeOpacity = { .5 }
               onPress={this.onLogin.bind(this)}
           >
@@ -47,10 +47,25 @@ export class Login extends React.Component<any, Credential> {
 
         </View>
         
+        <TouchableOpacity
+              style={[styles.buttonContainer,{alignSelf:'center', marginBottom:50}]}
+              activeOpacity = { .5 }
+              onPress={this.onLogin.bind(this)}
+          >
+              <Text style={styles.buttonText}>Create Account</Text>
+          </TouchableOpacity>
+
       </View>
     );
   }
 }
+
+const windowSize = {
+  width: Dimensions.get('screen').width,
+  height: Dimensions.get('screen').height,
+};
+
+const isPhone = windowSize.height / windowSize.width > 1.6;
 
 const styles = StyleSheet.create({
   container: {
@@ -62,18 +77,21 @@ const styles = StyleSheet.create({
     backgroundColor: '#3385ff',
     alignItems: 'center',
     justifyContent: 'center',
-    margin:100,
-    marginTop:200,
-    marginBottom:200,
+    marginLeft: isPhone ? 25 : 100,
+    marginRight: isPhone ? 25 : 100,
+    marginTop: isPhone ? 75 : 100,
+    marginBottom:  isPhone ? 75 : 100
   },
   text: {
     color: '#fff',
-    fontSize:20,
-    marginBottom:20,
-    fontWeight:'bold'
+    fontSize: 20,
+    marginBottom: 20,
+    fontWeight: 'bold',
   },
   input: {
-    width: 280,
+    marginLeft: 30,
+    marginRight: 30,
+    width: isPhone?100:300,
     height: 44,
     padding: 10,
     borderWidth: 2,
@@ -81,23 +99,21 @@ const styles = StyleSheet.create({
     backgroundColor: '#1a75ff',
     borderColor: 'white',
     marginBottom: 10,
-    fontStyle:'italic'
-    
+    fontStyle: 'italic',
   },
   buttonContainer: {
-    borderWidth:1,
-    borderColor:'black',
-    backgroundColor:'#1a75ff',
-    width: 280,
-    height: 50,
-    marginTop:10,
+    borderWidth: 1,
+    borderColor: 'black',
+    backgroundColor: '#1a75ff',
+    width: isPhone?100:300,
+    height: 44,
+    marginTop: 10,
     justifyContent: 'center',
     alignItems: 'center',
   },
   buttonText: {
     color: '#fff',
-    fontSize:16,
-    fontWeight:'bold',
-  }
- 
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
 });
