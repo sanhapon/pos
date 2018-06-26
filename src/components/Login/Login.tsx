@@ -1,15 +1,15 @@
 import React from 'react';
 import { Text, TextInput, TouchableOpacity, View, StyleSheet, Dimensions, Alert } from 'react-native';
-import { Credential } from './credential';
+import { LoginInfo } from './credential';
 
-export class Login extends React.Component<any, Credential> {
+export class Login extends React.Component<any, LoginInfo> {
   constructor(props: any) {
     super(props);
     
     this.state = {
       username: '',
       password: '',
-    } as Credential
+    } as LoginInfo
   }
   
   onLogin = () => {
@@ -20,7 +20,7 @@ export class Login extends React.Component<any, Credential> {
     return (
       <View style={styles.container}>
         <View style={styles.innerContainer}>
-          <Text style={styles.text}>Welcome to POS</Text>
+          <Text style={styles.text}>Welcome to H&P</Text>
           <Text style={styles.text}>Please sign in to access</Text>
           <TextInput style={styles.input} 
             underlineColorAndroid='transparent'
@@ -34,7 +34,7 @@ export class Login extends React.Component<any, Credential> {
               activeOpacity = { .5 }
               onPress={this.onLogin.bind(this)}
           >
-              <Text style={styles.buttonText}>Login</Text>
+              <Text style={styles.buttonText}>Continue</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -50,9 +50,12 @@ export class Login extends React.Component<any, Credential> {
         <TouchableOpacity
               style={[styles.buttonContainer,{alignSelf:'center', marginBottom:50}]}
               activeOpacity = { .5 }
-              onPress={this.onLogin.bind(this)}
+              onPress = { () => {this.props.navigation.navigate('Register');} }
           >
-              <Text style={styles.buttonText}>Create Account</Text>
+              <Text 
+              style={styles.buttonText}
+              
+              >Create Account</Text>
           </TouchableOpacity>
 
       </View>
